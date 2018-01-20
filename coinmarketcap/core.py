@@ -36,9 +36,9 @@ class Market(object):
 			response = json.loads(response_object.text)
 
 			if isinstance(response, list) and response_object.status_code == 200:
-				response = [dict(item, **{u'cached':response_object.from_cache}) for item in response]
+				response = [dict(item, **{'cached':response_object.from_cache}) for item in response]
 			if isinstance(response, dict) and response_object.status_code == 200:
-				response[u'cached'] = response_object.from_cache
+				response['cached'] = response_object.from_cache
 
 		except Exception as e:
 			return e
